@@ -84,7 +84,7 @@ var Subscriptions =  React.createClass({
     render: function() {
         return (
             <div id="striped" className="section scrollspy">
-                
+
             </div>
         );
     }
