@@ -1,0 +1,19 @@
+.route-effect-enter {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+  -webkit-transition-delay: .5s;
+  transition-delay: .5s;
+}
+
+.route-effect-enter.route-effect-enter-active {
+  opacity: 1;
+}
+
+.route-effect-leave {
+  opacity: 1;
+  transition: opacity .5s ease-in;
+}
+
+.route-effect-leave.route-effect-leave-active {
+  opacity: 0.01;
+}
