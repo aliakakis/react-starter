@@ -9,13 +9,10 @@ var Login =  React.createClass({
     mixins: [Router.State, Router.Navigation],
     getInitialState: function() {
         return {
-            username: "",
+            username: "John Doe",
             password: "",
             showCaptcha: false
         };
-    },
-    componentWillMount : function() {
-
     },
     componentDidMount: function() {
         if (Number(localStorage.getItem("LoginAttempts")) > 2) {
@@ -24,15 +21,10 @@ var Login =  React.createClass({
             });
         }
     },
-    componentWillUnmount : function() {
-
-    },
 
     /*
-     *   Class Custom functions
-     *
+     *  Class Custom functions
      * */
-
     _loginUser: function() {
         //console.log(this.refs.captcha);
         if (!this.state.showCaptcha) {

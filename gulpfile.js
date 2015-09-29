@@ -102,7 +102,7 @@ var bundler = watchify(browserify(watchify.args));
 // add the file to bundle
 bundler.add('./js/app.js');
 // add any other browserify options or transforms here
-bundler.transform(babelify);
+bundler.transform(babelify, {optional: ["es7.decorators"]});
 
 gulp.task('run_watchify_dev', bundle); // so you can run `gulp watchify` to build the file
 bundler.on('update', bundle); // on any dep update, runs the bundler

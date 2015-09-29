@@ -68,80 +68,135 @@ Router.run(routes, function (Handler) {
 });
 
 },{"./dev/components/dashboard/Subscriptions":3,"./dev/components/login/Login":4,"react-router":30,"react/addons":45}],2:[function(require,module,exports){
-"use strict";
+'use strict';
 
-var React = require('react/addons');
-//var $ = require('jquery');
-//var CustomEvents = require('../../../custom/EventSystem');
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var Captcha = React.createClass({
-    displayName: "Captcha",
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
-    getInitialState: function getInitialState() {
-        return {
+var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; desc = parent = getter = undefined; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; continue _function; } } else if ('value' in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== 'function' && superClass !== null) { throw new TypeError('Super expression must either be null or a function, not ' + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _reactAddons = require('react/addons');
+
+var _reactAddons2 = _interopRequireDefault(_reactAddons);
+
+var Enhance = function Enhance(ComposedComponent) {
+    return (function (_React$Component) {
+        _inherits(_class, _React$Component);
+
+        function _class(props) {
+            _classCallCheck(this, _class);
+
+            _get(Object.getPrototypeOf(_class.prototype), 'constructor', this).call(this, props);
+            this.state = { data: null };
+        }
+
+        _createClass(_class, [{
+            key: 'componentDidMount',
+            value: function componentDidMount() {
+                this.setState({ data: 'Hello' });
+            }
+        }, {
+            key: 'render',
+            value: function render() {
+                return _reactAddons2['default'].createElement(ComposedComponent, _extends({}, this.props, { data: this.state.data }));
+            }
+        }]);
+
+        return _class;
+    })(_reactAddons2['default'].Component);
+};
+
+var Captcha = (function (_React$Component2) {
+    _inherits(Captcha, _React$Component2);
+
+    function Captcha(props) {
+        _classCallCheck(this, Captcha);
+
+        _get(Object.getPrototypeOf(Captcha.prototype), 'constructor', this).call(this, props);
+        this.state = {
             captchaLabel: "",
             captchaInput: ""
         };
-    },
-    componentWillMount: function componentWillMount() {},
-    componentDidMount: function componentDidMount() {
-        var captcha = Math.floor(Math.random() * 10000000 + 1);
-        this.setState({
-            captchaLabel: captcha
-        });
+    }
 
-        var canvas = React.findDOMNode(this.refs.canvasCode),
-            ctx = canvas.getContext('2d');
-        ctx.font = '18px Arial';
-        ctx.strokeText(captcha, 10, 18);
-    },
-    componentWillUnmount: function componentWillUnmount() {},
+    _createClass(Captcha, [{
+        key: 'componentWillMount',
+        value: function componentWillMount() {}
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var captcha = Math.floor(Math.random() * 10000000 + 1);
+            this.setState({
+                captchaLabel: captcha
+            });
 
-    /*
-     *   Class Custom functions
-     *
-     * */
-    handleChangeCaptcha: function handleChangeCaptcha(event) {
-        event.preventDefault();
-        this.setState({
-            captchaInput: event.target.value
-        });
-    },
+            var canvas = _reactAddons2['default'].findDOMNode(this.refs.canvasCode),
+                ctx = canvas.getContext('2d');
+            ctx.font = '18px Arial';
+            ctx.strokeText(captcha, 10, 18);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {}
 
-    render: function render() {
-        var divStyle = {
-            display: this.props.show ? 'block' : 'none'
-        };
+        /*
+         *   Class Custom functions
+         *
+         * */
+    }, {
+        key: 'handleChangeCaptcha',
+        value: function handleChangeCaptcha(event) {
+            event.preventDefault();
+            this.setState({
+                captchaInput: event.target.value
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var divStyle = {
+                display: this.props.show ? 'block' : 'none'
+            };
 
-        return React.createElement(
-            "div",
-            { style: divStyle },
-            React.createElement(
-                "div",
-                { className: "row margin" },
-                React.createElement(
-                    "div",
-                    { className: "input-field col s12" },
-                    React.createElement(
-                        "label",
-                        { className: "center-align" },
-                        "Please verify you are human: ",
-                        React.createElement("canvas", { ref: "canvasCode", width: "100", height: "20" })
+            return _reactAddons2['default'].createElement(
+                'div',
+                { style: divStyle },
+                _reactAddons2['default'].createElement(
+                    'div',
+                    { className: 'row margin' },
+                    _reactAddons2['default'].createElement(
+                        'div',
+                        { className: 'input-field col s12' },
+                        _reactAddons2['default'].createElement(
+                            'label',
+                            { className: 'center-align' },
+                            'Please verify you are human: ',
+                            _reactAddons2['default'].createElement('canvas', { ref: 'canvasCode', width: '100', height: '20' })
+                        )
+                    )
+                ),
+                _reactAddons2['default'].createElement(
+                    'div',
+                    { className: 'row margin' },
+                    _reactAddons2['default'].createElement(
+                        'div',
+                        { className: 'input-field col s12' },
+                        _reactAddons2['default'].createElement('input', { ref: 'captcha', type: 'text', placeholder: 'Enter code', className: 'validate', onChange: this.handleChangeCaptcha })
                     )
                 )
-            ),
-            React.createElement(
-                "div",
-                { className: "row margin" },
-                React.createElement(
-                    "div",
-                    { className: "input-field col s12" },
-                    React.createElement("input", { ref: "captcha", type: "text", placeholder: "Enter code", className: "validate", onChange: this.handleChangeCaptcha })
-                )
-            )
-        );
-    }
-});
+            );
+        }
+    }]);
+
+    return Captcha;
+})(_reactAddons2['default'].Component);
 
 module.exports = Captcha;
 
@@ -245,12 +300,11 @@ var Login = React.createClass({
     mixins: [Router.State, Router.Navigation],
     getInitialState: function getInitialState() {
         return {
-            username: "",
+            username: "John Doe",
             password: "",
             showCaptcha: false
         };
     },
-    componentWillMount: function componentWillMount() {},
     componentDidMount: function componentDidMount() {
         if (Number(localStorage.getItem("LoginAttempts")) > 2) {
             this.setState({
@@ -258,13 +312,10 @@ var Login = React.createClass({
             });
         }
     },
-    componentWillUnmount: function componentWillUnmount() {},
 
     /*
-     *   Class Custom functions
-     *
+     *  Class Custom functions
      * */
-
     _loginUser: function _loginUser() {
         //console.log(this.refs.captcha);
         if (!this.state.showCaptcha) {

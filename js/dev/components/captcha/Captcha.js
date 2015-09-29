@@ -1,18 +1,30 @@
-var React = require('react/addons');
-//var $ = require('jquery');
-//var CustomEvents = require('../../../custom/EventSystem');
+import React from 'react/addons';
 
-var Captcha =  React.createClass({
-    getInitialState: function() {
-        return {
+var Enhance = ComposedComponent => class extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { data: null };
+    }
+    componentDidMount() {
+        this.setState({ data: 'Hello' });
+    }
+    render() {
+        return <ComposedComponent {...this.props} data={this.state.data} />;
+    }
+};
+
+class Captcha extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
             captchaLabel: "",
             captchaInput: ""
         };
-    },
-    componentWillMount : function() {
+    }
+    componentWillMount() {
 
-    },
-    componentDidMount: function() {
+    }
+    componentDidMount() {
         var captcha = Math.floor((Math.random() * 10000000) + 1);
         this.setState({
             captchaLabel: captcha
@@ -22,23 +34,23 @@ var Captcha =  React.createClass({
             ctx = canvas.getContext('2d');
         ctx.font='18px Arial';
         ctx.strokeText(captcha, 10, 18);
-    },
-    componentWillUnmount : function() {
+    }
+    componentWillUnmount() {
 
-    },
+    }
 
     /*
      *   Class Custom functions
      *
      * */
-    handleChangeCaptcha: function(event) {
+    handleChangeCaptcha(event) {
         event.preventDefault();
         this.setState({
             captchaInput: event.target.value
         });
-    },
+    }
 
-    render: function() {
+    render() {
         var divStyle = {
             display: this.props.show ? 'block' : 'none'
         };
@@ -58,6 +70,6 @@ var Captcha =  React.createClass({
             </div>
         );
     }
-});
+}
 
 module.exports = Captcha;
