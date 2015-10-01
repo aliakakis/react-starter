@@ -137,10 +137,10 @@ var Captcha = (function (_React$Component2) {
                 captchaLabel: captcha
             });
 
-            var canvas = _reactAddons2['default'].findDOMNode(this.refs.canvasCode),
+            /*var canvas = React.findDOMNode(this.refs.canvasCode),
                 ctx = canvas.getContext('2d');
-            ctx.font = '18px Arial';
-            ctx.strokeText(captcha, 10, 18);
+            ctx.font='18px Arial';
+            ctx.strokeText(captcha, 10, 18);*/
         }
     }, {
         key: 'componentWillUnmount',

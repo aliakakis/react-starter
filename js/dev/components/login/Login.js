@@ -15,11 +15,11 @@ var Login =  React.createClass({
         };
     },
     componentDidMount: function() {
-        if (Number(localStorage.getItem("LoginAttempts")) > 2) {
+        /*if (Number(localStorage.getItem("LoginAttempts")) > 2) {
             this.setState({
                 showCaptcha: true
             });
-        }
+        }*/
     },
 
     /*

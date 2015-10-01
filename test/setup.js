@@ -1,7 +1,8 @@
-// file: test/setup.js
-var jsdom = require('jsdom');
+//run -> npm test
 
-// A super simple DOM ready for React to render into
-// Store this DOM and the window in global scope ready for React to access
-global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
-global.window = document.parentWindow;
+//var jsdom = require('jsdom');
+
+//global.document = jsdom.jsdom('<!doctype html><html><body></body></html>');
+//global.window = document.parentWindow;
+
+//console.log("DOM: " + document.parentWindow);
