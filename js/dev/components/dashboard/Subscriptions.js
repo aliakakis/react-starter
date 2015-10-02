@@ -3,7 +3,7 @@ var React = require('react/addons');
 var Router = require('react-router');
 //var Link = Router.Link;
 
-//var classNames = require('classnames');
+//var classnames = require('classnames');
 
 var Subscriptions =  React.createClass({
     mixins: [Router.State, Router.Navigation],

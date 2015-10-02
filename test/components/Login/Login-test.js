@@ -7,20 +7,11 @@ var TestUtils = React.addons.TestUtils;
 describe('Login User', function() {
     jsdom();
     /*before('render and locate element', function() {
-        var renderedComponent = TestUtils.renderIntoDocument(
-            <Login />
-        );
 
-        var formComponent = TestUtils.findRenderedDOMComponentWithTag(
-            renderedComponent,
-            'form'
-        );
-
-        this.inputElement = React.findDOMNode(formComponent);
     });*/
 
     it('should open the login page', function() {
-        var renderedComponent = TestUtils.renderIntoDocument(
+        /*var renderedComponent = TestUtils.renderIntoDocument(
             <Login />
         );
 
@@ -29,11 +20,11 @@ describe('Login User', function() {
             'login-form'
         );
 
-        expect(React.findDOMNode(formComponent).className).to.equal('login-form');
+        expect(React.findDOMNode(formComponent).className).to.equal('login-form');*/
 
-        /*var shallowRenderer = TestUtils.createRenderer();
+        var shallowRenderer = TestUtils.createRenderer();
         shallowRenderer.render(<Login />);
         var result = shallowRenderer.getRenderOutput();
-        expect(result.type).to.equal('div');*/
+        expect(result.type).to.equal('div');
     });
 });

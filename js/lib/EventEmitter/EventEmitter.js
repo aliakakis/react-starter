@@ -1,4 +1,4 @@
-var CustomEvents = (function() {
+var EventEmitter = (function() {
     var registeredEvents = {};
 
     return {
@@ -17,5 +17,5 @@ var CustomEvents = (function() {
     };
 })();
 
-module.exports = CustomEvents;
+module.exports = EventEmitter;
 

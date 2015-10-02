@@ -1,9 +1,8 @@
 var React = require('react/addons');
-//var CustomEvents = require('../../../custom/EventSystem');
-
+//var EventEmitter = require('../../../lib/EventEmitter/EventEmitter');
 var Router = require('react-router');
-
 var Captcha = require('../captcha/Captcha');
+//var ReactJQueryUI = require('react-jqueryui');
 
 var Login =  React.createClass({
     mixins: [Router.State, Router.Navigation],
@@ -15,11 +14,12 @@ var Login =  React.createClass({
         };
     },
     componentDidMount: function() {
-        /*if (Number(localStorage.getItem("LoginAttempts")) > 2) {
+        if (Number(localStorage.getItem("LoginAttempts")) > 2) {
             this.setState({
                 showCaptcha: true
             });
-        }*/
+        }
+        $(React.findDOMNode(this.refs.loginPage)).draggable();
     },
 
     /*
@@ -97,7 +97,7 @@ var Login =  React.createClass({
 
     render: function() {
         return (
-            <div id="login-page" className="row">
+            <div id="login-page" ref="loginPage" className="row">
                 <div className="col s12 z-depth-2 card-panel">
                     <form className="login-form">
                         <div className="row">

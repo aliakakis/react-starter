@@ -208,7 +208,7 @@ var React = require('react/addons');
 var Router = require('react-router');
 //var Link = Router.Link;
 
-//var classNames = require('classnames');
+//var classnames = require('classnames');
 
 var Subscriptions = React.createClass({
     displayName: 'Subscriptions',
@@ -288,11 +288,10 @@ module.exports = Subscriptions;
 'use strict';
 
 var React = require('react/addons');
-//var CustomEvents = require('../../../custom/EventSystem');
-
+//var EventEmitter = require('../../../lib/EventEmitter/EventEmitter');
 var Router = require('react-router');
-
 var Captcha = require('../captcha/Captcha');
+//var ReactJQueryUI = require('react-jqueryui');
 
 var Login = React.createClass({
     displayName: 'Login',
@@ -311,6 +310,7 @@ var Login = React.createClass({
                 showCaptcha: true
             });
         }
+        $(React.findDOMNode(this.refs.loginPage)).draggable();
     },
 
     /*
@@ -386,7 +386,7 @@ var Login = React.createClass({
     render: function render() {
         return React.createElement(
             'div',
-            { id: 'login-page', className: 'row' },
+            { id: 'login-page', ref: 'loginPage', className: 'row' },
             React.createElement(
                 'div',
                 { className: 'col s12 z-depth-2 card-panel' },
