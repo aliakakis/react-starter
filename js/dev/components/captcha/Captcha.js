@@ -30,10 +30,10 @@ class Captcha extends React.Component {
             captchaLabel: captcha
         });
 
-        /*var canvas = React.findDOMNode(this.refs.canvasCode),
+        var canvas = React.findDOMNode(this.refs.canvasCode),
             ctx = canvas.getContext('2d');
         ctx.font='18px Arial';
-        ctx.strokeText(captcha, 10, 18);*/
+        ctx.strokeText(captcha, 10, 18);
     }
     componentWillUnmount() {
 

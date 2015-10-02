@@ -2,7 +2,7 @@ var React = require('react/addons');
 //var EventEmitter = require('../../../lib/EventEmitter/EventEmitter');
 var Router = require('react-router');
 var Captcha = require('../captcha/Captcha');
-//var ReactJQueryUI = require('react-jqueryui');
+var ReactJQueryUI = require('../../../lib/ReactJQueryUI/ReactJQueryUI');
 
 var Login =  React.createClass({
     mixins: [Router.State, Router.Navigation],
@@ -19,7 +19,6 @@ var Login =  React.createClass({
                 showCaptcha: true
             });
         }
-        //$(React.findDOMNode(this.refs.loginPage)).draggable({ revert: "invalid" });
     },
 
     /*
@@ -95,14 +94,20 @@ var Login =  React.createClass({
         this._loginUser();
     },
 
+    _drop: function(event, ui) {
+        console.log(event);
+    },
+
     render: function() {
         return (
-            <div id="login-page" ref="loginPage" className="row">
+            <div id="login-page" className="row">
                 <div className="col s12 z-depth-2 card-panel">
                     <form className="login-form">
                         <div className="row">
-                            <div className="input-field col s12 center">
-                                <h5 className="header center orange-text">Admin Console</h5>
+                            <div ref="headerTitle" className="input-field col s12 center">
+                                <ReactJQueryUI.Draggable helper="clone" revert="invalid">
+                                    <h5 className="header center orange-text">Admin Console</h5>
+                                </ReactJQueryUI.Draggable>
                             </div>
                         </div>
                         <div className="row margin">
@@ -144,6 +149,9 @@ var Login =  React.createClass({
                             </div>
                         </div>
                     </form>
+                    <ReactJQueryUI.Droppable drop={this._drop}>
+                        Drop
+                    </ReactJQueryUI.Droppable>
                 </div>
             </div>
         );
