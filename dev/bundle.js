@@ -310,7 +310,7 @@ var Login = React.createClass({
                 showCaptcha: true
             });
         }
-        $(React.findDOMNode(this.refs.loginPage)).draggable();
+        $(React.findDOMNode(this.refs.loginPage)).draggable({ revert: "invalid" });
     },
 
     /*
