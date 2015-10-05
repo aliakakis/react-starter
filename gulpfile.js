@@ -67,6 +67,7 @@ gulp.task('browserify-development', function() {
         .transform('babelify')
         .bundle()
         .pipe(source('bundle.js'))
+        .pipe(rename({ extname: ''+new Date().getTime()+'.min.js' }))
         .pipe(gulp.dest('dev'));
 });
 
