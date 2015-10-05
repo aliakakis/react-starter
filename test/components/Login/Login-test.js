@@ -6,25 +6,26 @@ var TestUtils = React.addons.TestUtils;
 
 describe('Login User', function() {
     jsdom();
-    /*before('render and locate element', function() {
-
-    });*/
-
     it('should open the login page', function() {
+
+        /*
+        *   With test utilities
+        * */
         /*var renderedComponent = TestUtils.renderIntoDocument(
             <Login />
         );
-
         var formComponent = TestUtils.findRenderedDOMComponentWithClass(
             renderedComponent,
             'login-form'
         );
-
         expect(React.findDOMNode(formComponent).className).to.equal('login-form');*/
 
-        var shallowRenderer = TestUtils.createRenderer();
+        /*
+        *   With shallow renderer
+        * */
+        /*var shallowRenderer = TestUtils.createRenderer();
         shallowRenderer.render(<Login />);
         var result = shallowRenderer.getRenderOutput();
-        expect(result.type).to.equal('div');
+        expect(result.type).to.equal('div');*/
     });
 });

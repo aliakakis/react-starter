@@ -25,7 +25,6 @@ var Login =  React.createClass({
      *  Class Custom functions
      * */
     _loginUser: function() {
-        //console.log(this.refs.captcha);
         if (!this.state.showCaptcha) {
             this._loginService(React.findDOMNode(this.refs.username).value, React.findDOMNode(this.refs.password).value, false);
         }
@@ -42,7 +41,7 @@ var Login =  React.createClass({
     _loginService: function(username, password, decrypt) {
         $.ajax({
             method: 'GET',
-            url: '' + location.protocol + '//' + location.host + '/GODashPro/Srv_Api/WebAPIRest.svc/LoginApiUser_UAIO',
+            url: "PLACE YOUR URL",
             cache: false,
             data: {
                 v1: username,
@@ -53,12 +52,7 @@ var Login =  React.createClass({
             contentType : 'application/json; charset-uf8',
             success: function(data) {
                 if (data.HasError) {
-                    localStorage.setItem("LoginAttempts", String(Number(localStorage.getItem("LoginAttempts")) + 1));
-                    if (Number(localStorage.getItem("LoginAttempts")) > 2) {
-                        this.setState({
-                            showCaptcha: true
-                        });
-                    }
+                    this._checkCaptcha();
                     Materialize.toast(data.ErrorMessage, 4000);
                 }
                 else {
@@ -84,9 +78,19 @@ var Login =  React.createClass({
                 }
             }.bind(this),
             error: function(xhr, status, err) {
+                this._checkCaptcha();
                 Materialize.toast(err.toString(), 4000);
             }.bind(this)
         });
+    },
+
+    _checkCaptcha: function() {
+        localStorage.setItem("LoginAttempts", String(Number(localStorage.getItem("LoginAttempts")) + 1));
+        if (Number(localStorage.getItem("LoginAttempts")) > 2) {
+            this.setState({
+                showCaptcha: true
+            });
+        }
     },
 
     handleLoginClick: function(event) {
@@ -94,20 +98,21 @@ var Login =  React.createClass({
         this._loginUser();
     },
 
-    _drop: function(event, ui) {
-        console.log(event);
-    },
-
     render: function() {
+        /*
+         *   Replace with Draggable for a jquery ui example
+         * */
+        /*<ReactJQueryUI.Draggable helper="clone" revert="invalid">
+            <h5 className="header center orange-text">Admin Console</h5>
+          </ReactJQueryUI.Draggable>*/
+
         return (
             <div id="login-page" className="row">
                 <div className="col s12 z-depth-2 card-panel">
                     <form className="login-form">
                         <div className="row">
                             <div ref="headerTitle" className="input-field col s12 center">
-                                <ReactJQueryUI.Draggable helper="clone" revert="invalid">
-                                    <h5 className="header center orange-text">Admin Console</h5>
-                                </ReactJQueryUI.Draggable>
+                                <h5 className="header center orange-text">Admin Console</h5>
                             </div>
                         </div>
                         <div className="row margin">
@@ -149,9 +154,6 @@ var Login =  React.createClass({
                             </div>
                         </div>
                     </form>
-                    <ReactJQueryUI.Droppable drop={this._drop}>
-                        Drop
-                    </ReactJQueryUI.Droppable>
                 </div>
             </div>
         );

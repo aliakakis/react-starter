@@ -1,5 +1,12 @@
+/*
+*   ES2015 example
+* */
+
 import React from 'react/addons';
 
+/*
+*   High order component example
+* */
 var Enhance = ComposedComponent => class extends React.Component {
     constructor(props) {
         super(props);

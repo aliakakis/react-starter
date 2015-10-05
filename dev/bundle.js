@@ -68,6 +68,10 @@ Router.run(routes, function (Handler) {
 });
 
 },{"./dev/components/dashboard/Subscriptions":3,"./dev/components/login/Login":4,"react-router":31,"react/addons":46}],2:[function(require,module,exports){
+/*
+*   ES2015 example
+* */
+
 'use strict';
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
@@ -86,6 +90,9 @@ var _reactAddons = require('react/addons');
 
 var _reactAddons2 = _interopRequireDefault(_reactAddons);
 
+/*
+*   High order component example
+* */
 var Enhance = function Enhance(ComposedComponent) {
     return (function (_React$Component) {
         _inherits(_class, _React$Component);
@@ -316,7 +323,6 @@ var Login = React.createClass({
      *  Class Custom functions
      * */
     _loginUser: function _loginUser() {
-        //console.log(this.refs.captcha);
         if (!this.state.showCaptcha) {
             this._loginService(React.findDOMNode(this.refs.username).value, React.findDOMNode(this.refs.password).value, false);
         } else {
@@ -331,7 +337,7 @@ var Login = React.createClass({
     _loginService: function _loginService(username, password, decrypt) {
         $.ajax({
             method: 'GET',
-            url: '' + location.protocol + '//' + location.host + '/GODashPro/Srv_Api/WebAPIRest.svc/LoginApiUser_UAIO',
+            url: "PLACE YOUR URL",
             cache: false,
             data: {
                 v1: username,
@@ -342,12 +348,7 @@ var Login = React.createClass({
             contentType: 'application/json; charset-uf8',
             success: (function (data) {
                 if (data.HasError) {
-                    localStorage.setItem("LoginAttempts", String(Number(localStorage.getItem("LoginAttempts")) + 1));
-                    if (Number(localStorage.getItem("LoginAttempts")) > 2) {
-                        this.setState({
-                            showCaptcha: true
-                        });
-                    }
+                    this._checkCaptcha();
                     Materialize.toast(data.ErrorMessage, 4000);
                 } else {
                     //Store user for all calls
@@ -372,9 +373,19 @@ var Login = React.createClass({
                 }
             }).bind(this),
             error: (function (xhr, status, err) {
+                this._checkCaptcha();
                 Materialize.toast(err.toString(), 4000);
             }).bind(this)
         });
+    },
+
+    _checkCaptcha: function _checkCaptcha() {
+        localStorage.setItem("LoginAttempts", String(Number(localStorage.getItem("LoginAttempts")) + 1));
+        if (Number(localStorage.getItem("LoginAttempts")) > 2) {
+            this.setState({
+                showCaptcha: true
+            });
+        }
     },
 
     handleLoginClick: function handleLoginClick(event) {
@@ -382,11 +393,14 @@ var Login = React.createClass({
         this._loginUser();
     },
 
-    _drop: function _drop(event, ui) {
-        console.log(event);
-    },
-
     render: function render() {
+        /*
+         *   Replace with Draggable for a jquery ui example
+         * */
+        /*<ReactJQueryUI.Draggable helper="clone" revert="invalid">
+            <h5 className="header center orange-text">Admin Console</h5>
+          </ReactJQueryUI.Draggable>*/
+
         return React.createElement(
             'div',
             { id: 'login-page', className: 'row' },
@@ -403,13 +417,9 @@ var Login = React.createClass({
                             'div',
                             { ref: 'headerTitle', className: 'input-field col s12 center' },
                             React.createElement(
-                                ReactJQueryUI.Draggable,
-                                { helper: 'clone', revert: 'invalid' },
-                                React.createElement(
-                                    'h5',
-                                    { className: 'header center orange-text' },
-                                    'Admin Console'
-                                )
+                                'h5',
+                                { className: 'header center orange-text' },
+                                'Admin Console'
                             )
                         )
                     ),
@@ -517,11 +527,6 @@ var Login = React.createClass({
                             )
                         )
                     )
-                ),
-                React.createElement(
-                    ReactJQueryUI.Droppable,
-                    { drop: this._drop },
-                    'Drop'
                 )
             )
         );
