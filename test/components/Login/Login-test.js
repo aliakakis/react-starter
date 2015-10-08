@@ -1,8 +1,8 @@
-var React = require('react/addons');
+var React = require('react');
 var jsdom = require('mocha-jsdom');
 var expect = require('chai').expect;
 var Login = require('../../../js/dev/components/login/Login');
-var TestUtils = React.addons.TestUtils;
+var TestUtils = require('react-addons-test-utils');
 
 describe('Login User', function() {
     jsdom();
