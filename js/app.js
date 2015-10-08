@@ -14,33 +14,6 @@ var Login = require('./dev/components/login/Login');
 
 var ReactCSSTransitionGroup = require('react-addons-transition-group');
 
-var Servo = React.createClass({
-    getInitialState: function() {
-        return {
-            initText: "hello",
-            test: "hi"
-        };
-    },
-    componentWillMount : function() {
-
-    },
-    componentDidMount: function() {
-
-    },
-    componentWillUnmount : function() {
-
-    },
-
-    /*
-     *   Class Custom functions
-     *
-     * */
-
-    render: function() {
-
-    }
-});
-
 ReactDOM.render((
     <Router>
         <Route path="/" component={Login}>
