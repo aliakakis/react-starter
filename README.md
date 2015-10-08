@@ -1,5 +1,5 @@
 # react-starter
-Generic react starter project with Reflux or Redux.
+Generic react starter project with optional Redux.
 
 # Why this starter
 While I was teaching myself React I found that a lot of the starter projects were either too simple or too complex.
