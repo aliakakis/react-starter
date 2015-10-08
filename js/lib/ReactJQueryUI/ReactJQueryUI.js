@@ -1,5 +1,6 @@
 var React = require('react');
-var shallowEqual = require('react/lib/shallowEqual');
+var ReactDom = require('react-dom');
+var shallowEqual = require('react-addons-shallow-compare');
 
 function wrapWidget(name) {
     var displayName = 'React' + name[0].toUpperCase() + name.slice(1);
@@ -24,7 +25,7 @@ function wrapWidget(name) {
         },
 
         _runPlugin: function() {
-            var $node = $(React.findDOMNode(this));
+            var $node = $(ReactDom.findDOMNode(this));
             $node[name](this.props);
             this.$ = $node;
         },

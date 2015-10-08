@@ -2,7 +2,8 @@
 *   ES2015 example
 * */
 
-import React from 'react/addons';
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 /*
 *   High order component example
@@ -37,7 +38,7 @@ class Captcha extends React.Component {
             captchaLabel: captcha
         });
 
-        var canvas = React.findDOMNode(this.refs.canvasCode),
+        var canvas = ReactDOM.findDOMNode(this.refs.canvasCode),
             ctx = canvas.getContext('2d');
         ctx.font='18px Arial';
         ctx.strokeText(captcha, 10, 18);

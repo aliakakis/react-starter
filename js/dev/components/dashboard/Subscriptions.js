@@ -1,12 +1,12 @@
-var React = require('react/addons');
+var React = require('react');
+var ReactDOM = require('react-dom');
 
-var Router = require('react-router');
+import { Router, Route, RouteHandler, Link, DefaultRoute } from 'react-router';
 //var Link = Router.Link;
 
 //var classnames = require('classnames');
 
 var Subscriptions =  React.createClass({
-    mixins: [Router.State, Router.Navigation],
     getInitialState: function() {
         return {
             "page": 0,

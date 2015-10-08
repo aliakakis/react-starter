@@ -1,11 +1,11 @@
-var React = require('react/addons');
+var React = require('react');
+var ReactDOM = require('react-dom');
 //var EventEmitter = require('../../../lib/EventEmitter/EventEmitter');
-var Router = require('react-router');
+import { Router, Route, RouteHandler, Link, DefaultRoute } from 'react-router';
 var Captcha = require('../captcha/Captcha');
 var ReactJQueryUI = require('../../../lib/ReactJQueryUI/ReactJQueryUI');
 
 var Login =  React.createClass({
-    mixins: [Router.State, Router.Navigation],
     getInitialState: function() {
         return {
             username: "John Doe",
@@ -26,11 +26,11 @@ var Login =  React.createClass({
      * */
     _loginUser: function() {
         if (!this.state.showCaptcha) {
-            this._loginService(React.findDOMNode(this.refs.username).value, React.findDOMNode(this.refs.password).value, false);
+            this._loginService(ReactDOM.findDOMNode(this.refs.username).value, ReactDOM.findDOMNode(this.refs.password).value, false);
         }
         else {
             if (this.refs.captcha.state.captchaLabel == this.refs.captcha.state.captchaInput) {
-                this._loginService(React.findDOMNode(this.refs.username).value, React.findDOMNode(this.refs.password).value, false);
+                this._loginService(ReactDOM.findDOMNode(this.refs.username).value, ReactDOM.findDOMNode(this.refs.password).value, false);
             }
             else {
                 Materialize.toast("Please check captcha.", 4000);

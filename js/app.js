@@ -3,20 +3,18 @@
  *
  * */
 
-var React = require('react/addons');
+var React = require('react');
+var ReactDOM = require('react-dom');
 
-var Router = require('react-router');
-var { Route, RouteHandler, Link, DefaultRoute } = Router;
+import { Router, Route, RouteHandler, Link, DefaultRoute } from 'react-router';
 
 //var CustomEvents = require('./custom/EventSystem');
 
 var Login = require('./dev/components/login/Login');
-var Subscriptions = require('./dev/components/dashboard/Subscriptions');
 
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var ReactCSSTransitionGroup = require('react-addons-transition-group');
 
 var Servo = React.createClass({
-    mixins: [Router.State],
     getInitialState: function() {
         return {
             initText: "hello",
@@ -39,27 +37,14 @@ var Servo = React.createClass({
      * */
 
     render: function() {
-        var name = this.context.router.getCurrentPath();
 
-        return (
-            <div>
-                <ReactCSSTransitionGroup transitionName="route-effect">
-                    <RouteHandler key={name}/>
-                </ReactCSSTransitionGroup>
-            </div>
-        );
     }
 });
 
-var routes = (
-    <Route handler={Servo} path="/">
-        <DefaultRoute handler={Login} />
-        <Route name="login" handler={Login} addHandlerKey={true} />
-        <Route name="subscriptions" handler={Subscriptions} addHandlerKey={true} />
-    </Route>
-);
-
-Router.run(routes, function (Handler) {
-    React.render(<Handler/>, document.getElementById('main'));
-});
-
+ReactDOM.render((
+    <Router>
+        <Route path="/" component={Login}>
+            <Route path="*" component={Login}/>
+        </Route>
+    </Router>
+), document.getElementById('main'));
