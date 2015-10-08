@@ -64,7 +64,7 @@ gulp.task('clean:js_production', function (cb) {
 * */
 gulp.task('browserify-development', function() {
     return browserify('./js/app.js')
-        .transform('babelify')
+        .transform(babelify, {optional: ["es7.decorators"]})
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(rename({ extname: ''+new Date().getTime()+'.min.js' }))
@@ -77,7 +77,7 @@ gulp.task('browserify-development', function() {
  * */
 gulp.task('browserify-production', function() {
     return browserify('./js/app.js')
-        .transform('babelify')
+        .transform(babelify, {optional: ["optimisation.react.inlineElements", "es7.decorators"]})
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(buffer())

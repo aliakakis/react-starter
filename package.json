@@ -9,6 +9,7 @@
     "babelify": "^6.3.0",
     "browserify": "^9.0.8",
     "chai": "^3.3.0",
+    "classnames": "^2.1.5",
     "del": "^1.2.1",
     "factor-bundle": "^2.5.0",
     "gulp": "^3.8.11",
