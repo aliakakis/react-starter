@@ -31,11 +31,11 @@
     "react-addons-transition-group": "^0.14.0",
     "react-dom": "^0.14.0",
     "react-redux": "^3.1.0",
-    "react-router": "^1.0.0-rc2",
     "redux": "^3.0.2",
     "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.4.0"
+    "watchify": "^3.4.0",
+    "react-router": "^1.0.0-rc3"
   },
   "scripts": {
     "test": "mocha --compilers js:babel/register --recursive"
