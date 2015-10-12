@@ -33,6 +33,7 @@ export default class Captcha extends React.Component {
 
     }
     componentDidMount() {
+        console.log(this.state);
         var captcha = Math.floor((Math.random() * 10000000) + 1);
         this.setState({
             captchaLabel: captcha
