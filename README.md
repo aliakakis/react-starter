@@ -1,5 +1,5 @@
 # react-starter
-Generic react starter project with optional Redux.
+Generic react starter project with optional .
 
 # Why this starter
 While I was teaching myself React I found that a lot of the starter projects were either too simple or too complex.
@@ -14,6 +14,11 @@ for the testing modules to function properly.
 ready to deploy to a production server while the "_development" is as the wording says for dev only. Actually both are doing the
 same thing but the production one also minifies everything.
 3) The project uses React router and materialize css and has a login page ready with some code to play with.
+
+# Why no Flux
+I find the Flux architecture somewhat convoluted for achieving simple stuff. I have to admit that Redux, Reflux and Fluxify seem to have
+the simplest implementations yet. However, I have built a simple EventEmitter which can achieve the same results without too much
+setup. Try it out. If you find it too simple then just use whichever Flux implementation you deem fit.
 
 # Disclaimer
 Copy it, sell it, do whatever you like. Suggestions are always welcome as I am still learning React.
