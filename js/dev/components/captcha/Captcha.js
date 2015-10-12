@@ -21,7 +21,7 @@ var Enhance = ComposedComponent => class extends React.Component {
     }
 };
 
-class Captcha extends React.Component {
+export default class Captcha extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -79,5 +79,3 @@ class Captcha extends React.Component {
         );
     }
 }
-
-module.exports = Captcha;
