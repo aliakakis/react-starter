@@ -1,9 +1,9 @@
 # react-starter
-Generic react starter project with optional .
+Generic react starter project with optional Redux or Fluxify.
 
 # Why this starter
 While I was teaching myself React I found that a lot of the starter projects were either too simple or too complex.
-This project has the minimun amount of resources to get you started. This project will be updated to the latest stable 
+This project has the minimum amount of resources to get you started. This project will be updated to the latest stable
 React version whenever it is released. I will probably migrate everything to ES2015 and use high order components in the 
 near future.
 

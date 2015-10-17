@@ -24,7 +24,7 @@ gulp.task('run_default_development', ['clean:js_development',
         var sources = gulp.src(['dev/*.js'], {read: false});
 
         return target.pipe(inject(sources, {
-            ignorePath: 'servo',
+            ignorePath: 'react-starter',
             addRootSlash: false
         }))
             .pipe(gulp.dest(''));
@@ -38,7 +38,7 @@ gulp.task('run_default_production', ['clean:js_production',
         var sources = gulp.src(['dist/*.js'], {read: false});
 
         return target.pipe(inject(sources, {
-            ignorePath: 'servo',
+            ignorePath: 'react-starter',
             addRootSlash: false
         }))
             .pipe(gulp.dest(''));
