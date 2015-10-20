@@ -9,7 +9,7 @@ var ReactDOM = require('react-dom');
 import { Router, Route, RouteHandler, Link, DefaultRoute } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 
-//var CustomEvents = require('./custom/EventSystem');
+//var EventEmitter = require('../../../lib/EventEmitter/EventEmitter');
 
 var Login = require('./dev/components/login/Login');
 

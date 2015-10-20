@@ -98,11 +98,17 @@ var Login =  React.createClass({
         this._loginUser();
     },
 
+    // jQuery UI event example as prop
+    /*_start: function(event, ui) {
+        console.log(event);
+        console.log(ui);
+    },*/
+
     render: function() {
         /*
-         *   Replace with Draggable for a jquery ui example
+         *   Replace with Draggable for a jQuery ui example
          * */
-        /*<ReactJQueryUI.Draggable helper="clone" revert="invalid">
+        /*<ReactJQueryUI.Draggable helper="clone" revert="invalid" start={this._start}>
             <h5 className="header center orange-text">Admin Console</h5>
           </ReactJQueryUI.Draggable>*/
 

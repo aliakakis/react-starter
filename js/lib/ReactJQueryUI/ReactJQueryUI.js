@@ -1,5 +1,5 @@
 var React = require('react');
-var ReactDom = require('react-dom');
+var ReactDOM = require('react-dom');
 var shallowEqual = require('react-addons-shallow-compare');
 
 function wrapWidget(name) {
@@ -7,11 +7,7 @@ function wrapWidget(name) {
 
     return React.createClass({
         render: function() {
-            return (
-                <div>
-                    {this.props.children}
-                </div>
-            );
+            return this.props.children;
         },
 
         componentDidUpdate: function(prevProps) {
@@ -25,7 +21,7 @@ function wrapWidget(name) {
         },
 
         _runPlugin: function() {
-            var $node = $(ReactDom.findDOMNode(this));
+            var $node = $(ReactDOM.findDOMNode(this));
             $node[name](this.props);
             this.$ = $node;
         },
