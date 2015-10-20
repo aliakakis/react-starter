@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var EventEmitter = require('../../../lib/EventEmitter/EventEmitter');
+//var EventEmitter = require('../../../lib/EventEmitter/EventEmitter');
 import { Router, Route, RouteHandler, Link, DefaultRoute } from 'react-router';
 import Captcha from '../captcha/Captcha';
 var ReactJQueryUI = require('../../../lib/ReactJQueryUI/ReactJQueryUI');
