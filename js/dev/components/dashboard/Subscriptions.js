@@ -36,7 +36,6 @@ var Subscriptions =  React.createClass({
 
     },
     componentDidMount: function() {
-        var t;
         this._getCloudServices(JSON.parse(localStorage.getItem("GoDashProUser")).Token,
             this.state.index,
             this.state.offset,
