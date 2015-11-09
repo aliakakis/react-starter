@@ -1,0 +1,18 @@
+{
+  "name": "react-starter",
+  "description": "",
+  "main": "gulpfile.js",
+  "authors": [
+    "aliakakis <aliakakis@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/aliakakis/react-starter",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
