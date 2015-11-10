@@ -6,7 +6,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-import { Router, Route, RouteHandler, Link, DefaultRoute } from 'react-router';
+import { Router, Route, Link } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 
 //var EventEmitter = require('../../../lib/EventEmitter/EventEmitter');
