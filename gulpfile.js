@@ -15,56 +15,41 @@ var babel = require("gulp-babel");
 var babelify = require("babelify");
 var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
+var notify = require('gulp-notify');
 
 // Production: clean -> compress -> inject
-gulp.task('run_default_development', ['clean:js_development',
-        'browserify-development'],
-    function() {
-        var target = gulp.src('index.html');
-        var sources = gulp.src(['dev/*.js'], {read: false});
-
-        return target.pipe(inject(sources, {
-            ignorePath: 'react-starter',
-            addRootSlash: false
-        }))
-            .pipe(gulp.dest(''));
-    });
+gulp.task('01_run_default_development', ['clean:js_development',
+        'browserify-development', 'inject:js_development']);
 
 // Production: clean -> compress -> inject
-gulp.task('run_default_production', ['clean:js_production',
-        'browserify-production'],
-    function() {
-        var target = gulp.src('index.html');
-        var sources = gulp.src(['dist/*.js'], {read: false});
-
-        return target.pipe(inject(sources, {
-            ignorePath: 'react-starter',
-            addRootSlash: false
-        }))
-            .pipe(gulp.dest(''));
-    });
+gulp.task('02_run_default_production', ['clean:js_production',
+        'browserify-production', 'inject:js_production']);
 
 //Clean js dev
-gulp.task('clean:js_development', function (cb) {
+gulp.task('clean:js_development', function () {
     del([
         'dev/**/*'
-    ], cb);
+    ]);
 });
 
 //Clean js prod
-gulp.task('clean:js_production', function (cb) {
+gulp.task('clean:js_production', function () {
     del([
         'dist/**/*'
-    ], cb);
+    ]);
 });
 
 /*
 *   Browserify Development
 *
 * */
-gulp.task('browserify-development', function() {
+gulp.task('browserify-development', ['clean:js_development'], function() {
     return browserify('./js/app.js')
-        .transform(babelify, {optional: ["es7.decorators"]})
+        .transform(babelify, {
+            presets: ["es2015", "react"],
+            plugins: ["transform-decorators",
+                      "transform-class-properties"]
+        })
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(rename({ extname: ''+new Date().getTime()+'.js' }))
@@ -75,15 +60,44 @@ gulp.task('browserify-development', function() {
  *   Browserify Production
  *
  * */
-gulp.task('browserify-production', function() {
+gulp.task('browserify-production', ['clean:js_production'], function() {
     return browserify('./js/app.js')
-        .transform(babelify, {optional: ["optimisation.react.inlineElements", "es7.decorators"]})
+        .transform(babelify, {
+            presets: ["es2015", "react"],
+            plugins: ["transform-decorators",
+                      "transform-react-inline-elements",
+                      "transform-class-properties"]
+        })
         .bundle()
         .pipe(source('bundle.js'))
         .pipe(buffer())
         .pipe(uglify())
         .pipe(rename({ extname: ''+new Date().getTime()+'.min.js' }))
         .pipe(gulp.dest('dist'));
+});
+
+//Inject js dev
+gulp.task('inject:js_development', ['browserify-development'], function () {
+    var target = gulp.src('index.html');
+    var sources = gulp.src(['dev/*.js'], {read: false});
+
+    return target.pipe(inject(sources, {
+            ignorePath: 'react-starter',
+            addRootSlash: false
+        }))
+        .pipe(gulp.dest(''));
+});
+
+//Inject production dev
+gulp.task('inject:js_production', ['browserify-production'], function () {
+    var target = gulp.src('index.html');
+    var sources = gulp.src(['dist/*.js'], {read: false});
+
+    return target.pipe(inject(sources, {
+            ignorePath: 'react-starter',
+            addRootSlash: false
+        }))
+        .pipe(gulp.dest(''));
 });
 
 /*

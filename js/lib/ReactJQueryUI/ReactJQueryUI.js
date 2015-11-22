@@ -1,34 +1,38 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var shallowEqual = require('react-addons-shallow-compare');
+import React from 'react';
+import ReactDOM from 'react-dom';
+import shallowEqual from 'react-addons-shallow-compare';
 
-function wrapWidget(name) {
+var wrapWidget = (name) => {
     var displayName = 'React' + name[0].toUpperCase() + name.slice(1);
 
-    return React.createClass({
-        render: function() {
-            return this.props.children;
-        },
+    return class extends React.Component {
+        constructor(props) {
+            super(props);
+        }
 
-        componentDidUpdate: function(prevProps) {
+        render() {
+            return this.props.children;
+        }
+
+        componentDidUpdate(prevProps) {
             if (!shallowEqual(prevProps, this.props)) {
                 this._runPlugin();
             }
-        },
+        }
 
-        componentDidMount: function() {
+        componentDidMount() {
             this._runPlugin();
-        },
+        }
 
-        _runPlugin: function() {
+        _runPlugin = () => {
             var $node = $(ReactDOM.findDOMNode(this));
             $node[name](this.props);
             this.$ = $node;
-        },
+        };
 
         displayName: displayName
-    });
-}
+    }
+};
 
 var WIDGETS = {
     Accordion: 'accordion',
@@ -54,4 +58,6 @@ for (var key in WIDGETS) {
     ReactJQueryUI[key] = wrapWidget(WIDGETS[key]);
 }
 
-module.exports = ReactJQueryUI;
+export default ReactJQueryUI = {};
+
+

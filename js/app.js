@@ -3,17 +3,17 @@
  *
  * */
 
-var React = require('react');
-var ReactDOM = require('react-dom');
+import React from 'react';
+import ReactDOM from 'react-dom';
 
 import { Router, Route, Link } from 'react-router';
 import createBrowserHistory from 'history/lib/createBrowserHistory'
 
 //var EventEmitter = require('../../../lib/EventEmitter/EventEmitter');
 
-var Login = require('./dev/components/login/Login');
+import Login from './dev/components/login/Login';
 
-var ReactCSSTransitionGroup = require('react-addons-transition-group');
+import ReactCSSTransitionGroup from 'react-addons-transition-group';
 
 ReactDOM.render((
     <Router history={createBrowserHistory()}>

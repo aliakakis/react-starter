@@ -22,13 +22,15 @@ var Enhance = ComposedComponent => class extends React.Component {
 };
 
 export default class Captcha extends React.Component {
+    state = {
+        captchaLabel: "",
+        captchaInput: ""
+    };
+
     constructor(props) {
         super(props);
-        this.state = {
-            captchaLabel: "",
-            captchaInput: ""
-        };
     }
+
     componentWillMount() {
 
     }
@@ -51,7 +53,7 @@ export default class Captcha extends React.Component {
      *   Class Custom functions
      *
      * */
-    handleChangeCaptcha(event) {
+    handleChangeCaptcha = (event) => {
         event.preventDefault();
         this.setState({
             captchaInput: event.target.value
