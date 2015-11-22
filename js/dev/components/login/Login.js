@@ -1,30 +1,33 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-//var EventEmitter = require('../../../lib/EventEmitter/EventEmitter');
-import { Router, Route, RouteHandler, Link, DefaultRoute } from 'react-router';
+import React from 'react';
+import ReactDOM from 'react-dom';
+//import EventEmitter from '../../../lib/EventEmitter/EventEmitter';
+import { Router, Route, Link } from 'react-router';
 import Captcha from '../captcha/Captcha';
-var ReactJQueryUI = require('../../../lib/ReactJQueryUI/ReactJQueryUI');
+import ReactJQueryUI from '../../../lib/ReactJQueryUI/ReactJQueryUI';
 
-var Login =  React.createClass({
-    getInitialState: function() {
-        return {
-            username: "John Doe",
-            password: "",
-            showCaptcha: false
-        };
-    },
-    componentDidMount: function() {
+export default class Login extends React.Component {
+    state = {
+        username: "John Doe",
+        password: "",
+        showCaptcha: false
+    };
+
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
         if (Number(localStorage.getItem("LoginAttempts")) > 2) {
             this.setState({
                 showCaptcha: true
             });
         }
-    },
+    }
 
     /*
      *  Class Custom functions
      * */
-    _loginUser: function() {
+    _loginUser = () => {
         if (!this.state.showCaptcha) {
             this._loginService(ReactDOM.findDOMNode(this.refs.username).value, ReactDOM.findDOMNode(this.refs.password).value, false);
         }
@@ -36,9 +39,9 @@ var Login =  React.createClass({
                 Materialize.toast("Please check captcha.", 4000);
             }
         }
-    },
+    }
 
-    _loginService: function(username, password, decrypt) {
+    _loginService = (username, password, decrypt) => {
         $.ajax({
             method: 'GET',
             url: "PLACE YOUR URL",
@@ -82,21 +85,21 @@ var Login =  React.createClass({
                 Materialize.toast(err.toString(), 4000);
             }.bind(this)
         });
-    },
+    }
 
-    _checkCaptcha: function() {
+    _checkCaptcha = () => {
         localStorage.setItem("LoginAttempts", String(Number(localStorage.getItem("LoginAttempts")) + 1));
         if (Number(localStorage.getItem("LoginAttempts")) > 2) {
             this.setState({
                 showCaptcha: true
             });
         }
-    },
+    }
 
-    handleLoginClick: function(event) {
+    handleLoginClick = (event) => {
         event.preventDefault();
         this._loginUser();
-    },
+    }
 
     // jQuery UI event example as prop
     /*_start: function(event, ui) {
@@ -104,7 +107,7 @@ var Login =  React.createClass({
         console.log(ui);
     },*/
 
-    render: function() {
+    render() {
         /*
          *   Replace with Draggable for a jQuery ui example
          * */
@@ -164,6 +167,4 @@ var Login =  React.createClass({
             </div>
         );
     }
-});
-
-module.exports = Login;
+}

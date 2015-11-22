@@ -1,4 +1,4 @@
-var EventEmitter = (function() {
+export default EventEmitter = (() => {
     var registeredEvents = {};
 
     return {
@@ -18,5 +18,4 @@ var EventEmitter = (function() {
     };
 })();
 
-module.exports = EventEmitter;
 
