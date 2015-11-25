@@ -102,10 +102,10 @@ export default class Login extends React.Component {
     };
 
     // jQuery UI event example as prop
-    /*_start: function(event, ui) {
+    /*_start = (event, ui) => {
         console.log(event);
         console.log(ui);
-    },*/
+    };*/
 
     render = () => {
         /*

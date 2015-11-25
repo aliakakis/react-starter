@@ -58,6 +58,6 @@ for (var key in WIDGETS) {
     ReactJQueryUI[key] = wrapWidget(WIDGETS[key]);
 }
 
-export default ReactJQueryUI = {};
+export default ReactJQueryUI;
 
 
