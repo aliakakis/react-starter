@@ -13,12 +13,14 @@ var Enhance = ComposedComponent => class extends React.Component {
         super(props);
         this.state = { data: null };
     }
-    componentDidMount() {
+
+    componentDidMount = () => {
         this.setState({ data: 'Hello' });
-    }
-    render() {
+    };
+
+    render = () => {
         return <ComposedComponent {...this.props} data={this.state.data} />;
-    }
+    };
 };
 
 export default class Captcha extends React.Component {
@@ -31,10 +33,11 @@ export default class Captcha extends React.Component {
         super(props);
     }
 
-    componentWillMount() {
+    componentWillMount = () => {
 
-    }
-    componentDidMount() {
+    };
+
+    componentDidMount = () => {
         var captcha = Math.floor((Math.random() * 10000000) + 1);
         this.setState({
             captchaLabel: captcha
@@ -44,10 +47,11 @@ export default class Captcha extends React.Component {
             ctx = canvas.getContext('2d');
         ctx.font='18px Arial';
         ctx.strokeText(captcha, 10, 18);
-    }
-    componentWillUnmount() {
+    };
 
-    }
+    componentWillUnmount = () => {
+
+    };
 
     /*
      *   Class Custom functions
@@ -58,9 +62,9 @@ export default class Captcha extends React.Component {
         this.setState({
             captchaInput: event.target.value
         });
-    }
+    };
 
-    render() {
+    render = () => {
         var divStyle = {
             display: this.props.show ? 'block' : 'none'
         };
