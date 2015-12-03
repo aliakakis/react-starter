@@ -1,19 +1,21 @@
 {
   "name": "react-starter",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.3.0",
+  "description": "A React starter project",
   "main": "gulpfile.js",
   "dependencies": {
     "classnames": "*",
     "history": "*",
+    "material-ui": "^0.13.4",
+    "mobservable": "^1.1.3",
+    "mobservable-react": "^2.1.0",
     "react": "*",
     "react-addons-shallow-compare": "*",
     "react-addons-test-utils": "*",
     "react-addons-transition-group": "*",
     "react-dom": "*",
-    "react-redux": "*",
     "react-router": "*",
-    "redux": "*"
+    "react-tap-event-plugin": "^0.2.1"
   },
   "devDependencies": {
     "babel": "*",
@@ -31,7 +33,7 @@
     "gulp-babel": "*",
     "gulp-concat": "*",
     "gulp-inject": "*",
-    "gulp-notify": "^2.2.0",
+    "gulp-notify": "*",
     "gulp-react": "*",
     "gulp-rename": "*",
     "gulp-sourcemaps": "*",
@@ -47,6 +49,6 @@
   "scripts": {
     "test": "mocha --compilers js:babel/register --recursive"
   },
-  "author": "",
+  "author": "Antonios Liakakis",
   "license": "ISC"
 }

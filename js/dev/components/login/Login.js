@@ -10,7 +10,7 @@ export default class Login extends React.Component {
         username: "John Doe",
         password: "",
         showCaptcha: false
-    };
+    }
 
     constructor(props) {
         super(props);
@@ -22,7 +22,7 @@ export default class Login extends React.Component {
                 showCaptcha: true
             });
         }
-    };
+    }
 
     /*
      *  Class Custom functions
@@ -39,7 +39,7 @@ export default class Login extends React.Component {
                 Materialize.toast("Please check captcha.", 4000);
             }
         }
-    };
+    }
 
     _loginService = (username, password, decrypt) => {
         $.ajax({
@@ -85,7 +85,7 @@ export default class Login extends React.Component {
                 Materialize.toast(err.toString(), 4000);
             }.bind(this)
         });
-    };
+    }
 
     _checkCaptcha = () => {
         localStorage.setItem("LoginAttempts", String(Number(localStorage.getItem("LoginAttempts")) + 1));
@@ -94,16 +94,16 @@ export default class Login extends React.Component {
                 showCaptcha: true
             });
         }
-    };
+    }
 
-    handleLoginClick = (event) => {
-        event.preventDefault();
+    handleLoginClick = (e) => {
+        e.preventDefault();
         this._loginUser();
-    };
+    }
 
     // jQuery UI event example as prop
-    /*_start = (event, ui) => {
-        console.log(event);
+    /*_start = (e, ui) => {
+        console.log(e);
         console.log(ui);
     };*/
 
@@ -165,6 +165,6 @@ export default class Login extends React.Component {
                     </form>
                 </div>
             </div>
-        );
+        )
     }
 }

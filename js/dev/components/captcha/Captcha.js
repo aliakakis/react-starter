@@ -1,7 +1,3 @@
-/*
-*   ES2015 example
-* */
-
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -16,18 +12,18 @@ var Enhance = ComposedComponent => class extends React.Component {
 
     componentDidMount = () => {
         this.setState({ data: 'Hello' });
-    };
+    }
 
     render = () => {
         return <ComposedComponent {...this.props} data={this.state.data} />;
-    };
+    }
 };
 
 export default class Captcha extends React.Component {
     state = {
         captchaLabel: "",
         captchaInput: ""
-    };
+    }
 
     constructor(props) {
         super(props);
@@ -35,7 +31,7 @@ export default class Captcha extends React.Component {
 
     componentWillMount = () => {
 
-    };
+    }
 
     componentDidMount = () => {
         var captcha = Math.floor((Math.random() * 10000000) + 1);
@@ -47,27 +43,27 @@ export default class Captcha extends React.Component {
             ctx = canvas.getContext('2d');
         ctx.font='18px Arial';
         ctx.strokeText(captcha, 10, 18);
-    };
+    }
 
     componentWillUnmount = () => {
 
-    };
+    }
 
     /*
      *   Class Custom functions
      *
      * */
-    handleChangeCaptcha = (event) => {
-        event.preventDefault();
+    handleChangeCaptcha = (e) => {
+        e.preventDefault();
         this.setState({
-            captchaInput: event.target.value
+            captchaInput: e.target.value
         });
-    };
+    }
 
     render = () => {
         var divStyle = {
             display: this.props.show ? 'block' : 'none'
-        };
+        }
 
         return (
             <div style={divStyle}>
@@ -82,6 +78,6 @@ export default class Captcha extends React.Component {
                     </div>
                 </div>
             </div>
-        );
+        )
     }
 }
