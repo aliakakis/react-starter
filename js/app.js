@@ -22,7 +22,6 @@ import NavigationClose from 'material-ui/lib/svg-icons/navigation/close';
 import MoreVertIcon from 'material-ui/lib/svg-icons/navigation/more-vert';
 import IconButton from 'material-ui/lib/icon-button';
 
-
 // Required until React 1.0
 injectTapEventPlugin();
 

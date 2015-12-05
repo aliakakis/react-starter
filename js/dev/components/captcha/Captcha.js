@@ -1,25 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
-/*
-*   High order component example
-* */
-var Enhance = ComposedComponent => class extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = { data: null };
-    }
+import { Enhance } from '../../decorators/decorators';
 
-    componentDidMount = () => {
-        this.setState({ data: 'Hello' });
-    }
-
-    render = () => {
-        return <ComposedComponent {...this.props} data={this.state.data} />;
-    }
-};
-
-export default class Captcha extends React.Component {
+export default Enhance(class Captcha extends React.Component {
     state = {
         captchaLabel: "",
         captchaInput: ""
@@ -39,10 +22,22 @@ export default class Captcha extends React.Component {
             captchaLabel: captcha
         });
 
-        var canvas = ReactDOM.findDOMNode(this.refs.canvasCode),
+        var canvas = this.canvasCode,
             ctx = canvas.getContext('2d');
         ctx.font='18px Arial';
         ctx.strokeText(captcha, 10, 18);
+    }
+
+    componentWillReceiveProps   = () => {
+
+    }
+
+    componentWillUpdate  = () => {
+
+    }
+
+    componentDidUpdate  = () => {
+
     }
 
     componentWillUnmount = () => {
@@ -69,7 +64,7 @@ export default class Captcha extends React.Component {
             <div style={divStyle}>
                 <div className="row margin">
                     <div className="input-field col s12">
-                        <label className="center-align">Please verify you are human: <canvas ref="canvasCode" width="100" height="20"></canvas></label>
+                        <label className="center-align">Please verify you are human: <canvas ref={(ref) => this.canvasCode = ref} width="100" height="20"></canvas></label>
                     </div>
                 </div>
                 <div className="row margin">
@@ -80,4 +75,4 @@ export default class Captcha extends React.Component {
             </div>
         )
     }
-}
+})

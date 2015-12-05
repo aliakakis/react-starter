@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 //import EventEmitter from '../../../lib/EventEmitter/EventEmitter';
 import { Router, Route, Link } from 'react-router';
 import Captcha from '../captcha/Captcha';
