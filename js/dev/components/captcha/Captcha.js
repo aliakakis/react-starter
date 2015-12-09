@@ -3,13 +3,22 @@ import React from 'react';
 import { Enhance } from '../../decorators/decorators';
 
 export default Enhance(class Captcha extends React.Component {
-    state = {
-        captchaLabel: "",
-        captchaInput: ""
-    }
 
     constructor(props) {
         super(props);
+    }
+
+    static defaultProps = {
+        show: true
+    }
+
+    static propTypes = {
+        show: React.PropTypes.bool
+    }
+
+    state = {
+        captchaLabel: "",
+        captchaInput: ""
     }
 
     componentWillMount = () => {

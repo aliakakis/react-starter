@@ -6,20 +6,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 export var Enhance = ComposedComponent => class extends React.Component {
-    state = {
-        data: null
-    }
 
     constructor(props) {
         super(props);
     }
 
-    componentDidMount = () => {
-        this.setState({ data: 'Hello' });
+    static defaultProps = {
+        enhanced: "yeap"
     }
 
-    _test = () => {
-        console.log("hi");
+    static propTypes = {
+        enhanced: React.PropTypes.string
+    }
+
+    state = {
+        data: null
+    }
+
+    componentDidMount = () => {
+        this.setState({ data: 'Hello' });
     }
 
     render = () => {
