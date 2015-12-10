@@ -13,8 +13,9 @@
 
     <title>React Starter</title>
 
-    <!-- Roboto font -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
+    <!-- Materialize style -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="bower_components/Materialize/dist/css/materialize.min.css"  media="screen,projection"/>
 
     <!-- jQuery UI -->
     <link href="bower_components/jquery-ui/themes/base/jquery-ui.min.css" media="screen" rel="stylesheet" type="text/css" />
@@ -26,7 +27,21 @@
 </head>
 <body class="">
 
-<nav id="nav" role="navigation"></nav>
+<nav class="grey lighten-4" role="navigation">
+    <div class="nav-wrapper">
+        <a id="logo-container" href="#" class="brand-logo">
+            <img src="css/app/stylesheets/images/appzone_logo.png" width="167" height="45" />
+        </a>
+        <ul class="right hide-on-med-and-down">
+            <li><a href="#" class="orange-text"><i class="material-icons">info_outline</i></a></li>
+        </ul>
+
+        <ul id="nav-mobile" class="side-nav" style="left: -250px;">
+            <li><a href="#"><i class="material-icons left">perm_identity</i>Register</a></li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+    </div>
+</nav>
 
 <div class="section">
     <div id="main" class=""></div>
@@ -38,6 +53,9 @@
 <script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="bower_components/jquery-ui/jquery-ui.min.js"></script>
 
+<!-- Materialize -->
+<script type="text/javascript" src="bower_components/Materialize/dist/js/materialize.min.js"></script>
+
 <!-- Lodash -->
 <script type="text/javascript" src="bower_components/lodash/lodash.min.js"></script>
 
@@ -45,7 +63,7 @@
 
 <!-- inject:js -->
 
-<script src="dev/bundle1449703963902.js"></script>
+<script src="dev/bundle1449771491736.js"></script>
 
 <!-- endinject -->
 

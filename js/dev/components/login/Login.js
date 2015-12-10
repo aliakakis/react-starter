@@ -4,16 +4,6 @@ import { Router, Route, Link } from 'react-router';
 import Captcha from '../captcha/Captcha';
 import ReactJQueryUI from '../../../lib/ReactJQueryUI/ReactJQueryUI';
 
-/** Material UI imports */
-import Card from 'material-ui/lib/card/card';
-import CardActions from 'material-ui/lib/card/card-actions';
-import CardExpandable from 'material-ui/lib/card/card-expandable';
-import CardHeader from 'material-ui/lib/card/card-header';
-import CardMedia from 'material-ui/lib/card/card-media';
-import CardText from 'material-ui/lib/card/card-text';
-import CardTitle from 'material-ui/lib/card/card-title';
-import FlatButton from 'material-ui/lib/flat-button';
-
 export default class Login extends React.Component {
 
     constructor(props) {
@@ -34,6 +24,10 @@ export default class Login extends React.Component {
 
     }
 
+    /**
+     *  WITH MATERIALIZE CSS INITIALIZE ANY JQUERY
+     *  COMPONENT IN THIS LIFECYCLE METHOD
+     */
     componentDidMount = () => {
         if (Number(localStorage.getItem("LoginAttempts")) > 2) {
             this.setState({
@@ -47,11 +41,11 @@ export default class Login extends React.Component {
      * */
     _loginUser = () => {
         if (!this.state.showCaptcha) {
-            this._loginService(ReactDOM.findDOMNode(this.refs.username).value, ReactDOM.findDOMNode(this.refs.password).value, false);
+            this._loginService(this.username.value, this.password.value);
         }
         else {
             if (this.captcha.state.captchaLabel == this.captcha.state.captchaInput) {
-                this._loginService(ReactDOM.findDOMNode(this.refs.username).value, ReactDOM.findDOMNode(this.refs.password).value, false);
+                this._loginService(this.username.value, this.password.value);
             }
             else {
                 Materialize.toast("Please check captcha.", 4000);
@@ -59,7 +53,7 @@ export default class Login extends React.Component {
         }
     }
 
-    _loginService = (username, password, decrypt) => {
+    _loginService = (username, password) => {
         $.ajax({
             method: 'GET',
             url: "PLACE YOUR URL",
@@ -114,9 +108,10 @@ export default class Login extends React.Component {
         }
     }
 
-    handleLoginClick = (e) => {
+    _handleLoginClick = (e) => {
         e.preventDefault();
-        this._loginUser();
+        //this._loginUser();
+        console.log(this.username.value, this.password.value);
     }
 
     // jQuery UI event example as prop
@@ -134,20 +129,55 @@ export default class Login extends React.Component {
           </ReactJQueryUI.Draggable>*/
 
         return (
-            <Card>
-                <CardTitle title="Title" subtitle="Subtitle"/>
-                <CardActions>
-                    <FlatButton label="Action1"/>
-                    <FlatButton label="Action2"/>
-                </CardActions>
-                <Captcha ref={(ref) => this.captcha = ref} show={this.state.showCaptcha}/>
-                <CardText>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-                    Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-                    Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-                </CardText>
-            </Card>
+            <div id="login-page" className="row">
+                <div className="col s12 z-depth-2 card-panel">
+                    <form className="login-form">
+                        <div className="row">
+                            <div ref={(ref) => this.headerTitle = ref} className="input-field col s12 center">
+                                <h5 className="header center orange-text">Admin Console</h5>
+                            </div>
+                        </div>
+                        <div className="row margin">
+                            <div className="input-field col s12">
+                                <i className="material-icons prefix">perm_identity</i>
+                                <input ref={(ref) => this.username = ref} type="text"/>
+                                <label htmlFor="username" className="center-align">Username</label>
+                            </div>
+                        </div>
+                        <div className="row margin">
+                            <div className="input-field col s12">
+                                <i className="material-icons prefix">lock_outline</i>
+                                <input ref={(ref) => this.password = ref} type="password"/>
+                                <label htmlFor="password">Password</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12 m12 l12">
+                                <input type="checkbox" id="remember-me"/>
+                                <label htmlFor="remember-me">Remember me</label>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12 m12 l12">
+                                <Captcha ref={(ref) => this.captcha = ref} show={this.state.showCaptcha}/>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s12">
+                                <a href="#" className="btn waves-effect waves-light col s12 orange" onClick={this._handleLoginClick}>Login</a>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="input-field col s6 m6 l6">
+                                <p className="margin medium-small"><a href="page-register.html">Register Now!</a></p>
+                            </div>
+                            <div className="input-field col s6 m6 l6">
+                                <p className="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password ?</a></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
         )
     }
 }

@@ -6,7 +6,6 @@
   "dependencies": {
     "classnames": "*",
     "history": "*",
-    "material-ui": "*",
     "mobservable": "*",
     "mobservable-react": "*",
     "react": "*",
@@ -14,8 +13,7 @@
     "react-addons-test-utils": "*",
     "react-addons-transition-group": "*",
     "react-dom": "*",
-    "react-router": "*",
-    "react-tap-event-plugin": "*"
+    "react-router": "*"
   },
   "devDependencies": {
     "babel": "*",

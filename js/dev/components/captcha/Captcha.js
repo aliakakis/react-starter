@@ -78,7 +78,7 @@ export default Enhance(class Captcha extends React.Component {
                 </div>
                 <div className="row margin">
                     <div className="input-field col s12">
-                        <input ref="captcha" type="text" placeholder="Enter code" className="validate" onChange={this.handleChangeCaptcha}/>
+                        <input ref={(ref) => this.captcha = ref} type="text" placeholder="Enter code" className="validate" onChange={this.handleChangeCaptcha}/>
                     </div>
                 </div>
             </div>
