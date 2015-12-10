@@ -17,8 +17,8 @@ React version whenever it is released. I will probably migrate everything to ES2
 near future.
 
 # Setup
-- First run "npm install" for all the necessary packages to install. Please note that I am using the latest version of node
-for the testing modules to function properly.
+- First run "npm install" and "bower install" for all the necessary packages to install. Please note that I am using the 
+latest version of node v.5.2.0 for the testing modules to function properly.
 - Gulpfile.js has many build options but three are the most important. "01_run_default_production" should be executed when you are
 ready to deploy to a production server while the "_development" is as the wording says for dev only. Actually both are doing the
 same thing but the production one also minifies everything.
