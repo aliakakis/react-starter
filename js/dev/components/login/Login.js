@@ -12,8 +12,7 @@ export default class Login extends React.Component {
 
     state = {
         username: "John Doe",
-        password: "",
-        showCaptcha: false
+        password: ""
     }
 
     static defaultProps = {
@@ -25,7 +24,7 @@ export default class Login extends React.Component {
     }
 
     /**
-     *  WITH MATERIALIZE CSS INITIALIZE ANY JQUERY
+     *  WITH MATERIALIZE INITIALIZE ANY JQUERY
      *  COMPONENT IN THIS LIFECYCLE METHOD
      */
     componentDidMount = () => {
@@ -36,9 +35,16 @@ export default class Login extends React.Component {
         }
     }
 
-    /*
+    /**
      *  Class Custom functions
-     * */
+     *
+     */
+
+    _handleLoginClick = (e) => {
+        e.preventDefault();
+        this._loginUser();
+    }
+
     _loginUser = () => {
         if (!this.state.showCaptcha) {
             this._loginService(this.username.value, this.password.value);
@@ -53,52 +59,6 @@ export default class Login extends React.Component {
         }
     }
 
-    _loginService = (username, password) => {
-        $.ajax({
-            method: 'GET',
-            url: "PLACE YOUR URL",
-            cache: false,
-            data: {
-                v1: username,
-                v2: password,
-                v3: decrypt
-            },
-            dataType: "json",
-            contentType : 'application/json; charset-uf8',
-            success: function(data) {
-                if (data.HasError) {
-                    this._checkCaptcha();
-                    Materialize.toast(data.ErrorMessage, 4000);
-                }
-                else {
-                    //Store user for all calls
-                    localStorage.removeItem("LoginAttempts");
-                    this.setState({
-                        showCaptcha: false
-                    });
-                    localStorage.setItem("GoDashProUser", JSON.stringify({
-                        "Token": data.Token,
-                        "Usr_UserAvatar": data.userAvatar,
-                        "Usr_Username": data.userUserName,
-                        "Usr_Email": data.userEmail,
-                        "Usr_FirstName": data.userFirstName,
-                        "Usr_LastName": data.userLastName,
-                        "Usr_CompanyName": data.userCompany,
-                        "Usr_CountryCode": data.userCountryCode,
-                        "isAdmin": data.isAdmin
-                    }));
-
-                    //Navigate to subscriptions
-                    this.transitionTo('subscriptions');
-                }
-            }.bind(this),
-            error: function(xhr, status, err) {
-                this._checkCaptcha();
-                Materialize.toast(err.toString(), 4000);
-            }.bind(this)
-        });
-    }
-
     _checkCaptcha = () => {
         localStorage.setItem("LoginAttempts", String(Number(localStorage.getItem("LoginAttempts")) + 1));
         if (Number(localStorage.getItem("LoginAttempts")) > 2) {
@@ -108,10 +68,29 @@ export default class Login extends React.Component {
         }
     }
 
-    _handleLoginClick = (e) => {
-        e.preventDefault();
-        //this._loginUser();
-        console.log(this.username.value, this.password.value);
+    _loginService = (username, password) => {
+        $.ajax(
+            {
+                type: 'GET',
+                url: "PLACE YOUR URL",
+                cache: false,
+                data: {
+                    v1: username,
+                    v2: password
+                },
+                dataType: "json",
+                contentType : 'application/json; charset-uf8'
+            }
+            )
+            .done((data) => {
+                alert("success");
+            })
+            .fail((jqXhr) => {
+                alert("error");
+            })
+            .always(() => {
+                alert("complete");
+            });
     }
 
     // jQuery UI event example as prop
@@ -121,9 +100,12 @@ export default class Login extends React.Component {
     };*/
 
     render = () => {
-        /*
-         *   Replace with Draggable for a jQuery ui example
-         * */
+
+        /**
+         *  Replace with Draggable for a jQuery ui example
+         *
+         */
+
         /*<ReactJQueryUI.Draggable helper="clone" revert="invalid" start={this._start}>
             <h5 className="header center orange-text">Admin Console</h5>
           </ReactJQueryUI.Draggable>*/
@@ -157,9 +139,9 @@ export default class Login extends React.Component {
                                 <label htmlFor="remember-me">Remember me</label>
                             </div>
                         </div>
-                        <div className="row">
+                        <div className="row" style={{display: 'none'}}>
                             <div className="input-field col s12 m12 l12">
-                                <Captcha ref={(ref) => this.captcha = ref} show={this.state.showCaptcha}/>
+                                <Captcha ref={(ref) => this.captcha = ref} show={true}/>
                             </div>
                         </div>
                         <div className="row">
