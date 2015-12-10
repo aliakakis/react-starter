@@ -28,7 +28,7 @@ var wrapWidget = (name) => {
             var $node = $(ReactDOM.findDOMNode(this));
             $node[name](this.props);
             this.$ = $node;
-        };
+        }
 
         displayName: displayName
     }

@@ -1,19 +1,19 @@
 {
   "name": "react-starter",
-  "version": "0.0.0",
-  "description": "",
+  "version": "0.3.0",
+  "description": "A React starter project",
   "main": "gulpfile.js",
   "dependencies": {
     "classnames": "*",
     "history": "*",
+    "mobservable": "*",
+    "mobservable-react": "*",
     "react": "*",
     "react-addons-shallow-compare": "*",
     "react-addons-test-utils": "*",
     "react-addons-transition-group": "*",
     "react-dom": "*",
-    "react-redux": "*",
-    "react-router": "*",
-    "redux": "*"
+    "react-router": "*"
   },
   "devDependencies": {
     "babel": "*",
@@ -26,12 +26,11 @@
     "browserify": "*",
     "chai": "*",
     "del": "*",
-    "factor-bundle": "*",
     "gulp": "*",
     "gulp-babel": "*",
     "gulp-concat": "*",
     "gulp-inject": "*",
-    "gulp-notify": "^2.2.0",
+    "gulp-notify": "*",
     "gulp-react": "*",
     "gulp-rename": "*",
     "gulp-sourcemaps": "*",
@@ -40,6 +39,7 @@
     "jsdom": "*",
     "mocha": "*",
     "mocha-jsdom": "*",
+    "partition-bundle": "*",
     "vinyl-buffer": "*",
     "vinyl-source-stream": "*",
     "watchify": "*"
@@ -47,6 +47,6 @@
   "scripts": {
     "test": "mocha --compilers js:babel/register --recursive"
   },
-  "author": "",
+  "author": "Antonios Liakakis",
   "license": "ISC"
 }

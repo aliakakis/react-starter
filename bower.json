@@ -19,6 +19,7 @@
   "dependencies": {
     "jquery": "~2.1.4",
     "jquery-ui": "~1.11.4",
-    "lodash": "~3.10.1"
+    "lodash": "~3.10.1",
+    "Materialize": "materialize#~0.97.3"
   }
 }
