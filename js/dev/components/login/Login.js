@@ -4,6 +4,14 @@ import { Router, Route, Link } from 'react-router';
 import Captcha from '../captcha/Captcha';
 import ReactJQueryUI from '../../../lib/ReactJQueryUI/ReactJQueryUI';
 
+/**
+ * Velocity animation
+ *
+ */
+import VelocityComponent from 'velocity-react/velocity-component';
+import VelocityTransitionGroup from 'velocity-react/velocity-transition-group';
+import velocityHelpers from 'velocity-react/velocity-helpers';
+
 export default class Login extends React.Component {
 
     constructor(props) {
@@ -111,55 +119,57 @@ export default class Login extends React.Component {
           </ReactJQueryUI.Draggable>*/
 
         return (
-            <div id="login-page" className="row">
-                <div className="col s12 z-depth-2 card-panel">
-                    <form className="login-form">
-                        <div className="row">
-                            <div ref={(ref) => this.headerTitle = ref} className="input-field col s12 center">
-                                <h5 className="header center orange-text">Admin Console</h5>
+            <VelocityComponent animation={{ opacity: 1 }} duration={500} runOnMount={true}>
+                <div id="login-page" className="row" style={{opacity: 0}}>
+                    <div className="col s12 z-depth-2 card-panel">
+                        <form className="login-form">
+                            <div className="row">
+                                <div ref={(ref) => this.headerTitle = ref} className="input-field col s12 center">
+                                    <h5 className="header center orange-text">Admin Console</h5>
+                                </div>
                             </div>
-                        </div>
-                        <div className="row margin">
-                            <div className="input-field col s12">
-                                <i className="material-icons prefix">perm_identity</i>
-                                <input ref={(ref) => this.username = ref} type="text"/>
-                                <label htmlFor="username" className="center-align">Username</label>
+                            <div className="row margin">
+                                <div className="input-field col s12">
+                                    <i className="material-icons prefix">perm_identity</i>
+                                    <input ref={(ref) => this.username = ref} type="text"/>
+                                    <label htmlFor="username" className="center-align">Username</label>
+                                </div>
                             </div>
-                        </div>
-                        <div className="row margin">
-                            <div className="input-field col s12">
-                                <i className="material-icons prefix">lock_outline</i>
-                                <input ref={(ref) => this.password = ref} type="password"/>
-                                <label htmlFor="password">Password</label>
+                            <div className="row margin">
+                                <div className="input-field col s12">
+                                    <i className="material-icons prefix">lock_outline</i>
+                                    <input ref={(ref) => this.password = ref} type="password"/>
+                                    <label htmlFor="password">Password</label>
+                                </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12 m12 l12">
-                                <input type="checkbox" id="remember-me"/>
-                                <label htmlFor="remember-me">Remember me</label>
+                            <div className="row">
+                                <div className="input-field col s12 m12 l12">
+                                    <input type="checkbox" id="remember-me"/>
+                                    <label htmlFor="remember-me">Remember me</label>
+                                </div>
                             </div>
-                        </div>
-                        <div className="row" style={{display: 'none'}}>
-                            <div className="input-field col s12 m12 l12">
-                                <Captcha ref={(ref) => this.captcha = ref} show={true}/>
+                            <div className="row" style={{display: 'none'}}>
+                                <div className="input-field col s12 m12 l12">
+                                    <Captcha ref={(ref) => this.captcha = ref} show={true}/>
+                                </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s12">
-                                <a href="#" className="btn waves-effect waves-light col s12 orange" onClick={this._handleLoginClick}>Login</a>
+                            <div className="row">
+                                <div className="input-field col s12">
+                                    <a href="#" className="btn waves-effect waves-light col s12 orange" onClick={this._handleLoginClick}>Login</a>
+                                </div>
                             </div>
-                        </div>
-                        <div className="row">
-                            <div className="input-field col s6 m6 l6">
-                                <p className="margin medium-small"><a href="page-register.html">Register Now!</a></p>
+                            <div className="row">
+                                <div className="input-field col s6 m6 l6">
+                                    <p className="margin medium-small"><a href="page-register.html">Register Now!</a></p>
+                                </div>
+                                <div className="input-field col s6 m6 l6">
+                                    <p className="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password ?</a></p>
+                                </div>
                             </div>
-                            <div className="input-field col s6 m6 l6">
-                                <p className="margin right-align medium-small"><a href="page-forgot-password.html">Forgot password ?</a></p>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            </VelocityComponent>
         )
     }
 }
