@@ -2,7 +2,7 @@
 - Decorators are currently not working with Babel 6.x and it is a known issue. Until then please have a look at 
 a workaround in the Captcha.js file.
 
-# IMPORTANT
+# IMPORTANT (IF USING PRE ES6 VERSION)
 So I made the switch to full ES2015. OK now... But... you have to do the next few steps. Sorry people...
 - Delete your node_modules folder and run npm install again. Babel and React changed a lot thus this necessary step. 
 - ALSO install node v.5 otherwise some modules will not install. Hope you like it(?)

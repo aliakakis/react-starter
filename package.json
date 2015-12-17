@@ -13,7 +13,8 @@
     "react-addons-test-utils": "*",
     "react-addons-transition-group": "*",
     "react-dom": "*",
-    "react-router": "*"
+    "react-router": "*",
+    "velocity-react": "^1.1.1"
   },
   "devDependencies": {
     "babel": "*",
