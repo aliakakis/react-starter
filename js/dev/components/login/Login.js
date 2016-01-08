@@ -21,15 +21,15 @@ export default class Login extends React.Component {
     state = {
         username: "John Doe",
         password: ""
-    }
+    };
 
     static defaultProps = {
 
-    }
+    };
 
     static propTypes = {
 
-    }
+    };
 
     /**
      *  WITH MATERIALIZE INITIALIZE ANY JQUERY
@@ -41,7 +41,7 @@ export default class Login extends React.Component {
                 showCaptcha: true
             });
         }
-    }
+    };
 
     /**
      *  Class Custom functions
@@ -51,7 +51,7 @@ export default class Login extends React.Component {
     _handleLoginClick = (e) => {
         e.preventDefault();
         this._loginUser();
-    }
+    };
 
     _loginUser = () => {
         if (!this.state.showCaptcha) {
@@ -65,7 +65,7 @@ export default class Login extends React.Component {
                 Materialize.toast("Please check captcha.", 4000);
             }
         }
-    }
+    };
 
     _checkCaptcha = () => {
         localStorage.setItem("LoginAttempts", String(Number(localStorage.getItem("LoginAttempts")) + 1));
@@ -74,7 +74,7 @@ export default class Login extends React.Component {
                 showCaptcha: true
             });
         }
-    }
+    };
 
     _loginService = (username, password) => {
         $.ajax(
@@ -99,7 +99,7 @@ export default class Login extends React.Component {
             .always(() => {
                 alert("complete");
             });
-    }
+    };
 
     // jQuery UI event example as prop
     /*_start = (e, ui) => {
@@ -171,5 +171,5 @@ export default class Login extends React.Component {
                 </div>
             </VelocityComponent>
         )
-    }
+    };
 }

@@ -10,20 +10,20 @@ export default Enhance(class Captcha extends React.Component {
 
     static defaultProps = {
         show: false
-    }
+    };
 
     static propTypes = {
         show: React.PropTypes.bool
-    }
+    };
 
     state = {
         captchaLabel: "",
         captchaInput: ""
-    }
+    };
 
     componentWillMount = () => {
 
-    }
+    };
 
     componentDidMount = () => {
         let captchaValue = Math.floor((Math.random() * 10000000) + 1);
@@ -35,23 +35,23 @@ export default Enhance(class Captcha extends React.Component {
             ctx = canvas.getContext('2d');
         ctx.font='14px Arial';
         ctx.strokeText(captchaValue, 10, 18);
-    }
+    };
 
     componentWillReceiveProps   = () => {
 
-    }
+    };
 
     componentWillUpdate  = () => {
 
-    }
+    };
 
     componentDidUpdate  = () => {
 
-    }
+    };
 
     componentWillUnmount = () => {
 
-    }
+    };
 
     /**
      *  Class Custom functions
@@ -62,7 +62,7 @@ export default Enhance(class Captcha extends React.Component {
         this.setState({
             captchaInput: e.target.value
         });
-    }
+    };
 
     render = () => {
         let divStyle = {
@@ -85,5 +85,5 @@ export default Enhance(class Captcha extends React.Component {
                 </div>
             </div>
         )
-    }
+    };
 })

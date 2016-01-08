@@ -10,27 +10,27 @@ var wrapWidget = (name) => {
             super(props);
         }
 
-        render() {
+        render = () => {
             return this.props.children;
-        }
+        };
 
-        componentDidUpdate(prevProps) {
+        componentDidUpdate = (prevProps) => {
             if (!shallowEqual(prevProps, this.props)) {
                 this._runPlugin();
             }
-        }
+        };
 
-        componentDidMount() {
+        componentDidMount = () => {
             this._runPlugin();
-        }
+        };
 
         _runPlugin = () => {
             var $node = $(ReactDOM.findDOMNode(this));
             $node[name](this.props);
             this.$ = $node;
-        }
+        };
 
-        displayName: displayName
+        displayName: displayName;
     }
 };
 

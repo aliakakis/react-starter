@@ -13,22 +13,22 @@ export var Enhance = ComposedComponent => class extends React.Component {
 
     static defaultProps = {
         enhanced: "yeap"
-    }
+    };
 
     static propTypes = {
         enhanced: React.PropTypes.string
-    }
+    };
 
     state = {
         data: null
-    }
+    };
 
     componentDidMount = () => {
         this.setState({ data: 'Hello' });
-    }
+    };
 
     render = () => {
         return <ComposedComponent {...this.props} {...this.state} />;
-    }
+    };
 };
 
