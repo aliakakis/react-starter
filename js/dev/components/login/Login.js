@@ -4,6 +4,8 @@ import { Router, Route, Link } from 'react-router';
 import Captcha from '../captcha/Captcha';
 import ReactJQueryUI from '../../../lib/ReactJQueryUI/ReactJQueryUI';
 
+import {observer} from 'mobservable-react';
+
 /**
  * Velocity animation
  *
@@ -12,7 +14,7 @@ import VelocityComponent from 'velocity-react/velocity-component';
 import VelocityTransitionGroup from 'velocity-react/velocity-transition-group';
 import velocityHelpers from 'velocity-react/velocity-helpers';
 
-export default class Login extends React.Component {
+export default observer(class Login extends React.Component {
 
     constructor(props) {
         super(props);
@@ -50,7 +52,8 @@ export default class Login extends React.Component {
 
     _handleLoginClick = (e) => {
         e.preventDefault();
-        this._loginUser();
+        this.props.route.store.addItem("New User");
+        //this._loginUser();
     };
 
     _loginUser = () => {
@@ -118,6 +121,10 @@ export default class Login extends React.Component {
             <h5 className="header center orange-text">Admin Console</h5>
           </ReactJQueryUI.Draggable>*/
 
+        let items = this.props.route.store.items.map((value, key) => {
+            return <div key={key}>Item {value}</div>;
+        });
+
         return (
             <VelocityComponent animation={{ opacity: 1 }} duration={500} runOnMount={true}>
                 <div id="login-page" className="row" style={{opacity: 0}}>
@@ -148,10 +155,13 @@ export default class Login extends React.Component {
                                     <label htmlFor="remember-me">Remember me</label>
                                 </div>
                             </div>
-                            <div className="row" style={{display: 'none'}}>
+                            <div className="row">
                                 <div className="input-field col s12 m12 l12">
                                     <Captcha ref={(ref) => this.captcha = ref} show={true}/>
                                 </div>
+                            </div>
+                            <div className="row">
+                                {items}
                             </div>
                             <div className="row">
                                 <div className="input-field col s12">
@@ -172,4 +182,4 @@ export default class Login extends React.Component {
             </VelocityComponent>
         )
     };
-}
+})
