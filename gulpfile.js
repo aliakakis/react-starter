@@ -48,9 +48,8 @@ gulp.task('clean:js_production', function () {
 gulp.task('browserify-development', ['clean:js_development'], function() {
     return browserify('./js/app.js')
         .transform(babelify, {
-            presets: ["es2015", "react"],
-            plugins: ["transform-decorators-legacy",
-                      "transform-class-properties"]
+            presets: ["es2015", "stage-0", "react"],
+            plugins: ["transform-decorators-legacy"]
         })
         .bundle()
         .pipe(source('bundle.js'))
@@ -64,10 +63,9 @@ gulp.task('browserify-development', ['clean:js_development'], function() {
 gulp.task('browserify-production', ['clean:js_production'], function() {
     return browserify('./js/app.js')
         .transform(babelify, {
-            presets: ["es2015", "react"],
+            presets: ["es2015", "stage-0", "react"],
             plugins: ["transform-decorators-legacy",
-                      "transform-react-inline-elements",
-                      "transform-class-properties"]
+                      "transform-react-inline-elements"]
         })
         .bundle()
         .pipe(source('bundle.js'))
