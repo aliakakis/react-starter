@@ -1,11 +1,12 @@
-import {extendObservable, autorun} from 'mobservable';
+import {observable} from 'mobx';
 
 export default class Store {
+    @observable bought = 0;
+    @observable items = [];
+
     constructor(b, i) {
-        extendObservable(this,{
-            bought: b,
-            items: i
-        });
+        this.bought = b;
+        this.items = i;
     }
 
     addItem = (name) => {

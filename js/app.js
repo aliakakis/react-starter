@@ -6,8 +6,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import 'mobservable-react-devtools';
-
 import 'velocity-animate';
 import 'velocity-animate/velocity.ui';
 

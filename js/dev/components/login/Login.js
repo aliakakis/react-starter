@@ -4,7 +4,8 @@ import { Router, Route, Link } from 'react-router';
 import Captcha from '../captcha/Captcha';
 import ReactJQueryUI from '../../../lib/ReactJQueryUI/ReactJQueryUI';
 
-import {observer} from 'mobservable-react';
+import {observer} from 'mobx-react';
+import DevTools from 'mobx-react-devtools';
 
 /**
  * Velocity animation
@@ -14,7 +15,8 @@ import VelocityComponent from 'velocity-react/velocity-component';
 import VelocityTransitionGroup from 'velocity-react/velocity-transition-group';
 import velocityHelpers from 'velocity-react/velocity-helpers';
 
-export default observer(class Login extends React.Component {
+@observer
+export default class Login extends React.Component {
 
     constructor(props) {
         super(props);
@@ -128,6 +130,7 @@ export default observer(class Login extends React.Component {
         return (
             <VelocityComponent animation={{ opacity: 1 }} duration={500} runOnMount={true}>
                 <div id="login-page" className="row" style={{opacity: 0}}>
+                    <DevTools />
                     <div className="col s12 z-depth-2 card-panel">
                         <form className="login-form">
                             <div className="row">
@@ -182,4 +185,4 @@ export default observer(class Login extends React.Component {
             </VelocityComponent>
         )
     };
-})
+}

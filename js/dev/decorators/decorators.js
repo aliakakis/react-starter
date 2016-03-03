@@ -5,7 +5,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-export var Enhance = ComposedComponent => class extends React.Component {
+export const enhance = ComposedComponent => class extends React.Component {
 
     constructor(props) {
         super(props);

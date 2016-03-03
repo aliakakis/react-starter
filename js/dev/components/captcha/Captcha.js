@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Enhance } from '../../decorators/decorators';
+import { enhance } from '../../decorators/decorators';
 
-export default Enhance(class Captcha extends React.Component {
+@enhance
+export default class Captcha extends React.Component {
 
     constructor(props) {
         super(props);
@@ -86,4 +87,4 @@ export default Enhance(class Captcha extends React.Component {
             </div>
         )
     };
-})
+}
