@@ -1,5 +1,7 @@
 'use strict';
 
+require("babel-core/register");
+
 var browserify = require('browserify');
 var gulp = require('gulp');
 var react = require('gulp-react');
@@ -16,6 +18,7 @@ var babelify = require("babelify");
 var gutil = require('gulp-util');
 var sourcemaps = require('gulp-sourcemaps');
 var notify = require('gulp-notify');
+var mocha = require('gulp-mocha');
 
 // Production: clean -> compress -> inject
 gulp.task('01_run_default_development', ['clean:js_development',
@@ -39,15 +42,14 @@ gulp.task('clean:js_production', function () {
     ]);
 });
 
-/*
-*   Browserify Development
-*
-* */
+/**
+ * Browserify Development
+ */
 gulp.task('browserify-development', ['clean:js_development'], function() {
     return browserify('./js/app.js')
         .transform(babelify, {
             presets: ["es2015", "react"],
-            plugins: ["transform-decorators",
+            plugins: ["transform-decorators-legacy",
                       "transform-class-properties"]
         })
         .bundle()
@@ -56,15 +58,14 @@ gulp.task('browserify-development', ['clean:js_development'], function() {
         .pipe(gulp.dest('dev'));
 });
 
-/*
- *   Browserify Production
- *
- * */
+/**
+ * Browserify Production
+ */
 gulp.task('browserify-production', ['clean:js_production'], function() {
     return browserify('./js/app.js')
         .transform(babelify, {
             presets: ["es2015", "react"],
-            plugins: ["transform-decorators",
+            plugins: ["transform-decorators-legacy",
                       "transform-react-inline-elements",
                       "transform-class-properties"]
         })
@@ -100,19 +101,30 @@ gulp.task('inject:js_production', ['browserify-production'], function () {
         .pipe(gulp.dest(''));
 });
 
-/*
-*   Watch for changes
-*
-* */
+/**
+ * Testing
+ */
+gulp.task('test', function () {
+    return gulp.src('js/dev/**/*.spec.js', { read: false })
+        .pipe(mocha({
+            compilers: {
+                js: babel
+            }
+        }));
+});
+
+/**
+ * Watch for changes
+ */
+
 gulp.task('watch', function() {
     gulp.watch('js/dev/**/*.js', ['dev']);
     gulp.watch('js/app.js', ['app_dev']);
 });
 
-/*
-*   Watchify
-*
-* */
+/**
+ * Watchify
+ */
 var bundler = watchify(browserify(watchify.args));
 // add the file to bundle
 bundler.add('./js/app.js');
