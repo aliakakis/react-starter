@@ -24,9 +24,9 @@ describe('Login User', function() {
         /**
          * With shallow renderer
          */
-        var shallowRenderer = ReactTestUtils.createRenderer();
+        /*var shallowRenderer = ReactTestUtils.createRenderer();
         shallowRenderer.render(<Login />);
         var result = shallowRenderer.getRenderOutput();
-        expect(result.type).to.equal('div');
+        expect(result.type).to.equal('div');*/
     });
 });

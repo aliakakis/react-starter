@@ -5,8 +5,8 @@ import Captcha from '../captcha/Captcha';
 import ReactJQueryUI from '../../../lib/ReactJQueryUI/ReactJQueryUI';
 
 import {observer} from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
-
+//import DevTools from 'mobx-react-devtools';
+//<DevTools />
 /**
  * Velocity animation
  *
@@ -130,7 +130,6 @@ export default class Login extends React.Component {
         return (
             <VelocityComponent animation={{ opacity: 1 }} duration={500} runOnMount={true}>
                 <div id="login-page" className="row" style={{opacity: 0}}>
-                    <DevTools />
                     <div className="col s12 z-depth-2 card-panel">
                         <form className="login-form">
                             <div className="row">
